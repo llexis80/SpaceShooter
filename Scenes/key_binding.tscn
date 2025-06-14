@@ -1,0 +1,274 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4e7y74is53kb"]
+
+[ext_resource type="Script" uid="uid://cwrhprb1ijw1k" path="res://Scenes/key_binding.gd" id="1_xjdqw"]
+[ext_resource type="Environment" uid="uid://bdsj5xd4fmn81" path="res://world.tres" id="2_ode6u"]
+[ext_resource type="FontFile" uid="uid://bp6pjfxv34hlw" path="res://Fonts/RussoOne-Regular.ttf" id="3_4kegn"]
+[ext_resource type="Script" uid="uid://dbkgpaxl42s8k" path="res://Scenes/control_button.gd" id="4_v830p"]
+
+[node name="KeyBinding" type="Node3D"]
+script = ExtResource("1_xjdqw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 25, 0)
+light_cull_mask = 4294966783
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 130, 0)
+fov = 30.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_ode6u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ControlsContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="EmptyLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+
+[node name="PrimaryKeyLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 20
+text = "Primary Key"
+
+[node name="SecondaryKeyLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 20
+text = "Secondary Key"
+
+[node name="MoveUpLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 20
+text = "Move Up:"
+
+[node name="MoveUpPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+
+[node name="MoveUpSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+primary = false
+
+[node name="MoveDownLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 20
+text = "Move Down:"
+
+[node name="MoveDownPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "move_down"
+
+[node name="MoveDownSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "move_down"
+primary = false
+
+[node name="MoveLeftLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 20
+text = "Move Left:"
+
+[node name="MoveLeftPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "move_left"
+
+[node name="MoveLeftSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "move_left"
+primary = false
+
+[node name="MoveRightLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 20
+text = "Move Right:"
+
+[node name="MoveRightPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "move_right"
+
+[node name="MoveRightSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "move_right"
+primary = false
+
+[node name="AccelerateLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 20
+text = "Accelerate:"
+
+[node name="AcceleratePrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "accelerate"
+
+[node name="AccelerateSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "accelerate"
+primary = false
+
+[node name="ShootPrimaryLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 20
+text = "Shoot Primary:"
+
+[node name="ShoorPrimaryPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "shoot_primary"
+
+[node name="ShootPrimarySecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "shoot_primary"
+primary = false
+
+[node name="ShootSecondaryLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 20
+text = "Shoot Secondary:"
+
+[node name="ShoorSecondaryPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "fire_secondary"
+
+[node name="ShootSecondarySecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "fire_secondary"
+primary = false
+
+[node name="PauseLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 20
+text = "Pause:"
+
+[node name="PausePrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "pause_game"
+
+[node name="PauseSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "pause_game"
+primary = false
+
+[node name="ResumeGameLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 20
+text = "Resume Game:"
+
+[node name="ResumeGamePrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "resume_game"
+
+[node name="ResumeGameSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_v830p")
+action = "resume_game"
+primary = false
+
+[node name="RestoreDefaultContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_left = 588.0
+offset_top = 655.0
+offset_right = 1026.0
+offset_bottom = 813.0
+theme_override_constants/margin_bottom = 100
+
+[node name="RestoreDefaultButton" type="Button" parent="CanvasLayer/RestoreDefaultContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 40
+text = "Restore Default Keys"
+
+[node name="BackContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BackButton" type="Button" parent="CanvasLayer/BackContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4kegn")
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveUpPrimaryButton" to="CanvasLayer/ControlsContainer/MoveUpPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveUpSecondaryButton" to="CanvasLayer/ControlsContainer/MoveUpSecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveDownPrimaryButton" to="CanvasLayer/ControlsContainer/MoveDownPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveDownSecondaryButton" to="CanvasLayer/ControlsContainer/MoveDownSecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveLeftPrimaryButton" to="CanvasLayer/ControlsContainer/MoveLeftPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveLeftSecondaryButton" to="CanvasLayer/ControlsContainer/MoveLeftSecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveRightPrimaryButton" to="CanvasLayer/ControlsContainer/MoveRightPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveRightSecondaryButton" to="CanvasLayer/ControlsContainer/MoveRightSecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/AcceleratePrimaryButton" to="CanvasLayer/ControlsContainer/AcceleratePrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/AccelerateSecondaryButton" to="CanvasLayer/ControlsContainer/AccelerateSecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/ShoorPrimaryPrimaryButton" to="CanvasLayer/ControlsContainer/ShoorPrimaryPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/ShootPrimarySecondaryButton" to="CanvasLayer/ControlsContainer/ShootPrimarySecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/ShoorSecondaryPrimaryButton" to="CanvasLayer/ControlsContainer/ShoorSecondaryPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/ShootSecondarySecondaryButton" to="CanvasLayer/ControlsContainer/ShootSecondarySecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/PausePrimaryButton" to="CanvasLayer/ControlsContainer/PausePrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/PauseSecondaryButton" to="CanvasLayer/ControlsContainer/PauseSecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/ResumeGamePrimaryButton" to="CanvasLayer/ControlsContainer/ResumeGamePrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/ResumeGameSecondaryButton" to="CanvasLayer/ControlsContainer/ResumeGameSecondaryButton" method="_on_toggled"]
+[connection signal="pressed" from="CanvasLayer/RestoreDefaultContainer/RestoreDefaultButton" to="." method="_on_restore_default_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackContainer/BackButton" to="." method="_on_back_button_pressed"]

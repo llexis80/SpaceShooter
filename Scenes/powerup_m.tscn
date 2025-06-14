@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnqkdyf4fxlws"]
+
+[ext_resource type="PackedScene" uid="uid://bl6j2t6sd7msk" path="res://Models/missile.glb" id="1_d6s2x"]
+[ext_resource type="Material" path="res://Materials/metallic.tres" id="2_32vyh"]
+[ext_resource type="Script" uid="uid://bpx6nl8ao4m1e" path="res://Scenes/powerup.gd" id="2_50hq3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_50hq3"]
+radius = 0.45
+
+[node name="powerup_m" groups=["missile"] instance=ExtResource("1_d6s2x")]
+collision_layer = 32
+script = ExtResource("2_50hq3")
+add_missle = true
+
+[node name="Text_001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_32vyh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("SphereShape3D_50hq3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

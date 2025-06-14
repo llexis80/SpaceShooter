@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://3te6ihnhj4b6"]
+
+[ext_resource type="PackedScene" uid="uid://cvc7ia8263rko" path="res://Models/asteroid.glb" id="1_0tomg"]
+[ext_resource type="Material" path="res://Materials/asteroid.tres" id="2_a2bka"]
+[ext_resource type="Script" uid="uid://wfkft48ib0on" path="res://Scenes/enemy.gd" id="2_rvlwq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rvlwq"]
+radius = 1.5
+
+[node name="asteroid" groups=["enemy"] instance=ExtResource("1_0tomg")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_rvlwq")
+
+[node name="rock" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_a2bka")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("SphereShape3D_rvlwq")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

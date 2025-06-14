@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://70ef8yy6r684"]
+
+[ext_resource type="PackedScene" uid="uid://c3cuj25htm4on" path="res://Models/ufo_ship.glb" id="1_1nhlm"]
+[ext_resource type="Script" uid="uid://wfkft48ib0on" path="res://Scenes/enemy.gd" id="2_aak0e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c54kh"]
+size = Vector3(2, 1, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w8e1d"]
+size = Vector3(12, 2, 1)
+
+[node name="ufo_ship" groups=["enemy", "metal", "modules"] instance=ExtResource("1_1nhlm")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_aak0e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="9"]
+shape = SubResource("BoxShape3D_c54kh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="10"]
+shape = SubResource("BoxShape3D_w8e1d")
+
+[node name="Weapons" type="Node3D" parent="." index="11"]
+
+[node name="Main" type="Node3D" parent="Weapons" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.79521)
+
+[node name="Direction" type="Node3D" parent="Weapons/Main" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.86052)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

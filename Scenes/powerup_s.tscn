@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy6v6koesh3ds"]
+
+[ext_resource type="PackedScene" uid="uid://q1mawew1uuul" path="res://Models/power_shield.glb" id="1_obel0"]
+[ext_resource type="Material" path="res://Materials/metallic.tres" id="2_lcovp"]
+[ext_resource type="Script" uid="uid://bpx6nl8ao4m1e" path="res://Scenes/powerup.gd" id="2_vbm3w"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lcovp"]
+
+[node name="powerup_s" groups=["powerups"] instance=ExtResource("1_obel0")]
+collision_layer = 32
+script = ExtResource("2_vbm3w")
+shield_boost = 20.0
+
+[node name="Text_001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_lcovp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("SphereShape3D_lcovp")

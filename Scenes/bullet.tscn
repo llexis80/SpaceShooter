@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp4s4bb3cc84s"]
+
+[ext_resource type="PackedScene" uid="uid://c4x3xg701eb5n" path="res://Models/bullet.glb" id="1_xjght"]
+[ext_resource type="Script" uid="uid://bxjx32up5q2f1" path="res://Scenes/bullet.gd" id="2_oduel"]
+[ext_resource type="Script" uid="uid://b83ejx1r62hx5" path="res://Scenes/bullet_trail.gd" id="3_ycag2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oduel"]
+height = 2.6
+
+[sub_resource type="Gradient" id="Gradient_ycag2"]
+offsets = PackedFloat32Array(0.296296, 0.58642)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.180392, 0.227451, 1)
+
+[node name="bullet" groups=["bullet"] instance=ExtResource("1_xjght")]
+collision_layer = 4
+collision_mask = 16
+script = ExtResource("2_oduel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.167662)
+shape = SubResource("CylinderShape3D_oduel")
+
+[node name="Trail" type="Line2D" parent="." index="2"]
+script = ExtResource("3_ycag2")
+gradient_color = SubResource("Gradient_ycag2")

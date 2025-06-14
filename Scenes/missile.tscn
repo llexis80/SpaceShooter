@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq45g75q8omk7"]
+
+[ext_resource type="PackedScene" uid="uid://bl6j2t6sd7msk" path="res://Models/missile.glb" id="1_u28tq"]
+[ext_resource type="Script" uid="uid://wfkft48ib0on" path="res://Scenes/enemy.gd" id="2_5epdn"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5epdn"]
+height = 5.7
+
+[sub_resource type="FogMaterial" id="FogMaterial_vgqql"]
+albedo = Color(0.890196, 0.203922, 0.203922, 1)
+edge_fade = 1.01965
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u28tq"]
+next_pass = SubResource("FogMaterial_vgqql")
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.890196, 0.203922, 0.203922, 0.176471)
+heightmap_enabled = true
+heightmap_scale = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bkb3y"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.999998
+linear_accel_max = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_5epdn"]
+radius = 0.1
+height = 0.2
+
+[node name="missile" groups=["enemy", "metal"] instance=ExtResource("1_u28tq")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_5epdn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.847681)
+shape = SubResource("CylinderShape3D_5epdn")
+
+[node name="LeftFlame" type="GPUParticles3D" parent="." index="2"]
+transform = Transform3D(0.4, 0, 0, 0, 0.390669, 0.0858941, 0, -0.0858941, 0.390669, 0, 0, 2.065)
+material_override = SubResource("StandardMaterial3D_u28tq")
+amount = 50
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_bkb3y")
+draw_pass_1 = SubResource("SphereMesh_5epdn")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

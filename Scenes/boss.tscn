@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmedcrafu1tbm"]
+
+[ext_resource type="PackedScene" uid="uid://gjcyyedrm0y0" path="res://Models/boss.glb" id="1_ukjjc"]
+[ext_resource type="Script" uid="uid://wfkft48ib0on" path="res://Scenes/enemy.gd" id="2_mh6p8"]
+[ext_resource type="Material" path="res://Materials/rusty_metal.tres" id="2_n725y"]
+[ext_resource type="Material" path="res://Materials/metallic.tres" id="3_mh6p8"]
+[ext_resource type="Material" path="res://Materials/gold.tres" id="4_qtle2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yq25j"]
+radius = 2.5
+
+[node name="boss" groups=["boss", "enemy", "metal", "modules"] instance=ExtResource("1_ukjjc")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_mh6p8")
+
+[node name="Body" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_n725y")
+
+[node name="Gun 1" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_mh6p8")
+
+[node name="Gun 2" parent="." index="2"]
+surface_material_override/0 = ExtResource("3_mh6p8")
+
+[node name="Gun 3" parent="." index="3"]
+surface_material_override/0 = ExtResource("3_mh6p8")
+
+[node name="Gun 4" parent="." index="4"]
+surface_material_override/0 = ExtResource("3_mh6p8")
+
+[node name="Bottom" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_n725y")
+
+[node name="Cap" parent="." index="6"]
+surface_material_override/0 = ExtResource("4_qtle2")
+
+[node name="Top 1" parent="." index="7"]
+surface_material_override/0 = ExtResource("2_n725y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="8" groups=["boss", "metal", "modules"]]
+shape = SubResource("SphereShape3D_yq25j")
+
+[node name="Weapons" type="Node3D" parent="." index="9"]
+
+[node name="Gun 1" type="Node3D" parent="Weapons" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Direction" type="Node3D" parent="Weapons/Gun 1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Gun 2" type="Node3D" parent="Weapons" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Direction" type="Node3D" parent="Weapons/Gun 2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Gun 3" type="Node3D" parent="Weapons" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Direction" type="Node3D" parent="Weapons/Gun 3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Gun 4" type="Node3D" parent="Weapons" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="Direction" type="Node3D" parent="Weapons/Gun 4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

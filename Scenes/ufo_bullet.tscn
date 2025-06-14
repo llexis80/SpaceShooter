@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://co31rhsamdid8"]
+
+[ext_resource type="PackedScene" uid="uid://c4x3xg701eb5n" path="res://Models/bullet.glb" id="1_m12cx"]
+[ext_resource type="Script" uid="uid://ctv74dsjb0486" path="res://Scenes/ufo_bullet.gd" id="2_m12cx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oduel"]
+height = 2.6
+
+[node name="bullet" groups=["enemy", "metal", "ufo_bullet"] instance=ExtResource("1_m12cx")]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("2_m12cx")
+
+[node name="Cylinder" parent="." index="0" groups=["enemy", "metal"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.167662)
+shape = SubResource("CylinderShape3D_oduel")

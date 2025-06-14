@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6uicsmo2rpi8"]
+
+[ext_resource type="PackedScene" uid="uid://cttugjedef2nm" path="res://Models/power_weapon.glb" id="1_bo06w"]
+[ext_resource type="Material" path="res://Materials/metallic.tres" id="2_1dekk"]
+[ext_resource type="Script" uid="uid://bpx6nl8ao4m1e" path="res://Scenes/powerup.gd" id="2_xjkt6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xjkt6"]
+
+[node name="powerup_w" groups=["powerups"] instance=ExtResource("1_bo06w")]
+collision_layer = 32
+script = ExtResource("2_xjkt6")
+activate_side_weapons = true
+
+[node name="Text" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_1dekk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("SphereShape3D_xjkt6")

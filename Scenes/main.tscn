@@ -1,0 +1,123 @@
+[gd_scene load_steps=14 format=3 uid="uid://dy6y6cxwul0ah"]
+
+[ext_resource type="PackedScene" uid="uid://bs173vxpmq1fy" path="res://Scenes/debug.tscn" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://ct7p278ldwis2" path="res://Scenes/main.gd" id="1_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://c45aq4sgw12wr" path="res://Scenes/HUD.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://pcr2ybp2m4t2" path="res://Scenes/player.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://ddxho64ariyy7" path="res://Scenes/boundary.tscn" id="5_kry3j"]
+[ext_resource type="Environment" uid="uid://bdsj5xd4fmn81" path="res://world.tres" id="6_6bp64"]
+[ext_resource type="FontFile" uid="uid://bvcimollrwq1n" path="res://Fonts/RobotoSlab-VariableFont_wght.ttf" id="6_21xkr"]
+[ext_resource type="FontFile" uid="uid://bp6pjfxv34hlw" path="res://Fonts/RussoOne-Regular.ttf" id="8_344ge"]
+[ext_resource type="Script" uid="uid://bttpbdruxxxyy" path="res://Scenes/pause_node.gd" id="9_ynf5e"]
+[ext_resource type="Shader" uid="uid://d4f6nrar2elxh" path="res://Shaders/shockwave.gdshader" id="10_hptm8"]
+[ext_resource type="Shader" uid="uid://dliwm27gubker" path="res://Shaders/pixelated.gdshader" id="11_d1ilt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1ilt"]
+shader = ExtResource("10_hptm8")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/power = 0.05
+shader_parameter/size = 0.0
+shader_parameter/sharpness = 0.1
+shader_parameter/thickness = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6iyac"]
+shader = ExtResource("11_d1ilt")
+shader_parameter/pixel_size = 1.0
+
+[node name="MainRoot" type="Node3D"]
+script = ExtResource("1_jjvhh")
+
+[node name="Debug" parent="." instance=ExtResource("1_bo1nx")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+offset_right = 1.0
+grow_vertical = 0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 25, 0)
+light_cull_mask = 4294966783
+
+[node name="DebrisLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 25, 0)
+light_color = Color(0.728995, 0.319366, 0.213833, 1)
+light_cull_mask = 4294966784
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 130, 0)
+fov = 30.0
+
+[node name="Hud" parent="." instance=ExtResource("2_8gbba")]
+
+[node name="player" parent="." instance=ExtResource("3_8gbba")]
+
+[node name="Boundary" parent="." instance=ExtResource("5_kry3j")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("6_6bp64")
+
+[node name="LoadingLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_21xkr")
+theme_override_font_sizes/font_size = 30
+text = "Loading, please wait"
+
+[node name="PauseBox" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -25.0
+offset_right = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GamePausedLabel" type="Label" parent="PauseBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_344ge")
+theme_override_font_sizes/font_size = 50
+text = "Game Paused"
+
+[node name="ContinueLabel" type="Label" parent="PauseBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_344ge")
+theme_override_font_sizes/font_size = 27
+text = "Press ENTER to continue"
+
+[node name="PauseNode" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("9_ynf5e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_d1ilt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Pixelation" type="ColorRect" parent="CanvasLayer2"]
+material = SubResource("ShaderMaterial_6iyac")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

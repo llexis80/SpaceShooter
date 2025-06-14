@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs173vxpmq1fy"]
+
+[ext_resource type="FontFile" uid="uid://bvcimollrwq1n" path="res://Fonts/RobotoSlab-VariableFont_wght.ttf" id="1_axs6p"]
+[ext_resource type="Script" uid="uid://cfg5o753ukkm3" path="res://Scenes/debug.gd" id="2_5k3ys"]
+
+[node name="Debug" type="Label"]
+theme_override_fonts/font = ExtResource("1_axs6p")
+theme_override_font_sizes/font_size = 24
+script = ExtResource("2_5k3ys")

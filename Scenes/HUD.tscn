@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=3 uid="uid://c45aq4sgw12wr"]
+
+[ext_resource type="Script" uid="uid://c2ja871fvxkob" path="res://Scenes/HUD.gd" id="1_jo1ms"]
+[ext_resource type="FontFile" uid="uid://bp6pjfxv34hlw" path="res://Fonts/RussoOne-Regular.ttf" id="1_sd512"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_jo1ms")
+
+[node name="Player" type="MarginContainer" parent="."]
+offset_right = 335.0
+offset_bottom = 47.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="Player"]
+layout_mode = 2
+columns = 2
+
+[node name="HullIntegrityLabel" type="Label" parent="Player/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_sd512")
+theme_override_font_sizes/font_size = 20
+text = "main.label.hull.integrity"
+
+[node name="HullIntegrityBar" type="ProgressBar" parent="Player/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="ShieldPowerLabel" type="Label" parent="Player/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_sd512")
+theme_override_font_sizes/font_size = 20
+text = "Shield power:"
+
+[node name="ShieldPowerBar" type="ProgressBar" parent="Player/GridContainer"]
+layout_mode = 2
+value = 100.0
+
+[node name="MissileCounterLabel" type="Label" parent="Player/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_sd512")
+theme_override_font_sizes/font_size = 20
+text = "Missiles:"
+
+[node name="MissileCounter" type="Label" parent="Player/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_sd512")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+
+[node name="Boss" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -335.0
+offset_bottom = 78.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="Boss"]
+layout_mode = 2
+columns = 2
+
+[node name="HullIntegrityLabel" type="Label" parent="Boss/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_sd512")
+theme_override_font_sizes/font_size = 20
+text = "Hull integrity:"
+
+[node name="HullIntegrityBar" type="ProgressBar" parent="Boss/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="ShieldPowerLabel" type="Label" parent="Boss/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_sd512")
+theme_override_font_sizes/font_size = 20
+text = "Shield power:"
+
+[node name="ShieldPowerBar" type="ProgressBar" parent="Boss/GridContainer"]
+layout_mode = 2
+value = 100.0
