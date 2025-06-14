@@ -1,0 +1,15 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c775ftfirh1tw"
+valid=false
+
+[deps]
+
+source_file="res://Sounds/translations.csv"
+
+[params]
+
+compress=true
+delimiter=0
